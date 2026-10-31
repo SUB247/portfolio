@@ -30,9 +30,9 @@ export default function Contact() {
           start: 'top 75%',
           toggleActions: 'play none none none',
         },
-        y: 40,
+        y: 35,
         opacity: 0,
-        duration: 1,
+        duration: 0.9,
         ease: 'power3.out',
       });
     }, sectionRef);
@@ -65,7 +65,7 @@ export default function Contact() {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative min-h-[90vh] flex flex-col justify-center py-28 sm:py-36 px-6 sm:px-10 lg:px-16 overflow-hidden bg-bg"
+      className="relative flex flex-col justify-center py-16 sm:py-24 lg:py-28 px-4 sm:px-8 lg:px-16 overflow-hidden bg-bg"
     >
       {/* Cinematic HLS Video Background with darker overlay as specified */}
       <HlsVideoBackground
@@ -74,16 +74,16 @@ export default function Contact() {
       />
 
       {/* Top and bottom subtle gradient masks */}
-      <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-[#0a0a0a] to-transparent pointer-events-none" />
-      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0a0a0a] to-transparent pointer-events-none" />
+      <div className="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-[#0a0a0a] to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-[#0a0a0a] to-transparent pointer-events-none" />
 
       <div
         ref={contentRef}
         className="relative z-10 max-w-6xl mx-auto w-full my-auto"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
           {/* Left Column: Big Typography & Direct Contacts */}
-          <div className="lg:col-span-7 space-y-8">
+          <div className="lg:col-span-7 space-y-6 sm:space-y-8">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10">
               <span className="w-1.5 h-1.5 rounded-full bg-[#89AACC] animate-pulse" />
               <span className="font-mono text-xs uppercase tracking-widest text-[#89AACC]">
@@ -91,23 +91,23 @@ export default function Contact() {
               </span>
             </div>
 
-            <h2 className="font-serif italic text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-white tracking-tight leading-[1.05]">
+            <h2 className="font-serif italic text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white tracking-tight leading-[1.08]">
               Have an idea? <br />
               <span className="bg-gradient-to-r from-white via-[#e8e8e8] to-[#89AACC] bg-clip-text text-transparent">
                 Let&apos;s build something.
               </span>
             </h2>
 
-            <p className="text-base sm:text-lg text-text/80 leading-relaxed font-light max-w-xl font-sans">
+            <p className="text-[15px] sm:text-base lg:text-lg text-text/85 leading-relaxed font-normal max-w-xl font-sans">
               Always interested in exploring new technologies, learning from interesting projects and connecting with people who love building things.
             </p>
 
             {/* Email Contact Pill & Direct Action */}
             <div className="space-y-4">
-              <div className="flex flex-wrap items-center gap-3">
+              <div className="flex flex-col xs:flex-row items-stretch xs:items-center gap-3">
                 <a
                   href={`mailto:${personalData.email}`}
-                  className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-medium text-black bg-white hover:bg-white/90 shadow-xl shadow-white/10 transition-all duration-300"
+                  className="group relative inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full text-base font-medium text-black bg-white hover:bg-white/90 shadow-xl shadow-white/10 transition-all duration-300 min-h-[48px]"
                 >
                   <Mail className="w-4 h-4 text-black" />
                   <span>Let&apos;s Talk ↗</span>
@@ -115,8 +115,9 @@ export default function Contact() {
 
                 <button
                   onClick={handleCopyEmail}
-                  className="inline-flex items-center gap-2 px-5 py-4 rounded-full text-sm font-mono text-white bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-200"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full text-sm font-mono text-white bg-white/5 hover:bg-white/10 active:bg-white/15 border border-white/10 transition-all duration-200 min-h-[48px]"
                   title="Copy email address"
+                  aria-label="Copy email address"
                 >
                   {copied ? (
                     <>
@@ -134,7 +135,7 @@ export default function Contact() {
             </div>
 
             {/* Social Links */}
-            <div className="pt-4 border-t border-white/10 flex flex-wrap items-center gap-6">
+            <div className="pt-4 border-t border-white/10 flex flex-wrap items-center gap-5 sm:gap-6">
               <span className="text-xs font-mono uppercase tracking-widest text-muted">
                 Connect Online:
               </span>
@@ -144,7 +145,7 @@ export default function Contact() {
                   href={s.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center space-x-1.5 text-sm text-muted hover:text-white transition-colors"
+                  className="group flex items-center space-x-1.5 text-sm text-text/80 hover:text-white transition-colors min-h-[36px]"
                 >
                   <span>{s.name}</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-muted group-hover:text-[#89AACC] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -155,22 +156,21 @@ export default function Contact() {
 
           {/* Right Column: Quick Interactive Message Box */}
           <div className="lg:col-span-5">
-            <div className="relative rounded-3xl bg-[#121212]/90 border border-white/10 p-6 sm:p-8 backdrop-blur-xl shadow-2xl">
-              {/* Glow border gradient on card */}
+            <div className="relative rounded-3xl bg-[#121212]/90 border border-white/10 p-5 sm:p-7 lg:p-8 backdrop-blur-xl shadow-2xl">
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-[#89AACC]/15 to-[#4E85BF]/15 opacity-50 pointer-events-none" />
 
-              <div className="relative z-10 space-y-5">
+              <div className="relative z-10 space-y-4 sm:space-y-5">
                 <div className="flex items-center justify-between pb-3 border-b border-white/10">
                   <div className="flex items-center space-x-2">
                     <Sparkles className="w-4 h-4 text-[#89AACC]" />
-                    <h3 className="text-sm font-semibold text-white">Send a Message</h3>
+                    <h3 className="text-sm sm:text-base font-semibold text-white">Send a Message</h3>
                   </div>
                   <span className="text-[11px] font-mono text-muted">Quick Dispatch</span>
                 </div>
 
-                <form onSubmit={handleFormSubmit} className="space-y-4 text-xs font-sans">
+                <form onSubmit={handleFormSubmit} className="space-y-3.5 text-xs font-sans">
                   <div>
-                    <label className="block text-[11px] font-mono uppercase tracking-wider text-muted mb-1.5">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-muted/90 mb-1.5">
                       Your Name
                     </label>
                     <input
@@ -178,12 +178,12 @@ export default function Contact() {
                       value={formState.name}
                       onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                       placeholder="Alex Taylor"
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder:text-muted/40 focus:outline-none focus:border-[#89AACC] transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder:text-muted/40 focus:outline-none focus:border-[#89AACC] transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-mono uppercase tracking-wider text-muted mb-1.5">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-muted/90 mb-1.5">
                       Your Email *
                     </label>
                     <input
@@ -192,12 +192,12 @@ export default function Contact() {
                       value={formState.email}
                       onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                       placeholder="alex@domain.com"
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder:text-muted/40 focus:outline-none focus:border-[#89AACC] transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder:text-muted/40 focus:outline-none focus:border-[#89AACC] transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-mono uppercase tracking-wider text-muted mb-1.5">
+                    <label className="block text-xs font-mono uppercase tracking-wider text-muted/90 mb-1.5">
                       Message *
                     </label>
                     <textarea
@@ -206,20 +206,20 @@ export default function Contact() {
                       value={formState.message}
                       onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                       placeholder="Hello Vivek, let's discuss a project or collaboration..."
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder:text-muted/40 focus:outline-none focus:border-[#89AACC] transition-colors resize-none"
+                      className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder:text-muted/40 focus:outline-none focus:border-[#89AACC] transition-colors resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-medium text-black bg-gradient-to-r from-[#89AACC] to-[#4E85BF] hover:opacity-95 shadow-md shadow-[#4E85BF]/20 transition-all font-sans text-xs tracking-wide"
+                    className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-medium text-black bg-gradient-to-r from-[#89AACC] to-[#4E85BF] hover:opacity-95 shadow-md shadow-[#4E85BF]/20 transition-all font-sans text-sm tracking-wide min-h-[48px]"
                   >
-                    <Send className="w-3.5 h-3.5" />
+                    <Send className="w-4 h-4" />
                     <span>Send Message via Email Client</span>
                   </button>
 
                   {sentNotice && (
-                    <div className="p-2.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-center text-xs">
+                    <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-center text-xs">
                       Opening your email client... Thank you!
                     </div>
                   )}

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
-import { ArrowDown, ArrowUpRight, Terminal, Sparkles, Shield, Cpu } from 'lucide-react';
+import { ArrowDown, ArrowUpRight } from 'lucide-react';
 import HlsVideoBackground from './HlsVideoBackground';
 import { personalData } from '../data/personal';
 
@@ -33,37 +33,37 @@ export default function Hero({ isLoaded }) {
 
       tl.fromTo(
         eyebrowRef.current,
-        { opacity: 0, y: 20, filter: 'blur(10px)' },
-        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.8, delay: 0.2 }
+        { opacity: 0, y: 16, filter: 'blur(8px)' },
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.8, delay: 0.15 }
       )
         .fromTo(
           headingRef.current,
-          { opacity: 0, y: 40 },
-          { opacity: 1, y: 0, duration: 1.1 },
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 1.0 },
           '-=0.5'
         )
         .fromTo(
           introRef.current,
-          { opacity: 0, y: 25 },
-          { opacity: 1, y: 0, duration: 0.8 },
-          '-=0.6'
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.75 },
+          '-=0.55'
         )
         .fromTo(
           descRef.current,
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.8 },
+          { opacity: 0, y: 16 },
+          { opacity: 1, y: 0, duration: 0.75 },
           '-=0.5'
         )
         .fromTo(
           ctaRef.current,
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.7 },
+          { opacity: 0, y: 16 },
+          { opacity: 1, y: 0, duration: 0.65 },
           '-=0.4'
         )
         .fromTo(
           scrollIndicatorRef.current,
-          { opacity: 0, y: 15 },
-          { opacity: 1, y: 0, duration: 0.6 },
+          { opacity: 0, y: 12 },
+          { opacity: 1, y: 0, duration: 0.5 },
           '-=0.2'
         );
     }, heroRef);
@@ -77,24 +77,24 @@ export default function Hero({ isLoaded }) {
     <section
       id="home"
       ref={heroRef}
-      className="relative min-h-screen flex flex-col justify-between pt-28 pb-10 sm:pb-12 px-6 sm:px-10 lg:px-16 overflow-hidden bg-bg"
+      className="relative min-h-[100svh] flex flex-col justify-between pt-24 sm:pt-28 pb-8 sm:pb-12 px-4 sm:px-8 lg:px-16 overflow-hidden bg-bg"
     >
-      {/* Cinematic HLS Video Background */}
+      {/* Cinematic HLS Video Background with enhanced contrast */}
       <HlsVideoBackground
         src={personalData.hero.hlsVideoUrl}
-        overlayOpacity="bg-black/75"
+        overlayOpacity="bg-black/80 sm:bg-black/75"
       />
 
       {/* Subtle top spotlight glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] max-w-4xl h-[350px] bg-gradient-to-b from-[#4E85BF]/15 via-transparent to-transparent blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[90vw] max-w-4xl h-[320px] bg-gradient-to-b from-[#4E85BF]/15 via-transparent to-transparent blur-3xl pointer-events-none" />
 
       {/* Main Hero Body */}
-      <div className="relative z-10 max-w-5xl mx-auto my-auto w-full text-center flex flex-col items-center">
+      <div className="relative z-10 max-w-4xl mx-auto my-auto w-full text-center flex flex-col items-center">
         {/* Eyebrow */}
-        <div ref={eyebrowRef} className="opacity-0 mb-4 sm:mb-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md">
+        <div ref={eyebrowRef} className="opacity-0 mb-3 sm:mb-5">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.05] border border-white/10 backdrop-blur-md">
             <span className="w-1.5 h-1.5 rounded-full bg-[#89AACC] animate-pulse" />
-            <span className="font-mono text-[11px] sm:text-xs font-semibold tracking-[0.22em] uppercase text-text/80">
+            <span className="font-mono text-[11px] sm:text-xs font-semibold tracking-[0.2em] uppercase text-text/85">
               {personalData.hero.eyebrow}
             </span>
           </div>
@@ -103,7 +103,7 @@ export default function Hero({ isLoaded }) {
         {/* Oversized Instrument Serif Italic Heading */}
         <h1
           ref={headingRef}
-          className="opacity-0 font-serif italic text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white tracking-tight leading-[1.05] mb-5 select-none"
+          className="opacity-0 font-serif italic text-4xl sm:text-6xl md:text-7xl lg:text-9xl text-white tracking-tight leading-[1.08] mb-4 sm:mb-5 select-none"
         >
           {personalData.hero.greeting}{' '}
           <span className="bg-gradient-to-r from-white via-[#f0f0f0] to-[#89AACC] bg-clip-text text-transparent">
@@ -114,17 +114,17 @@ export default function Hero({ isLoaded }) {
         {/* Dynamic Animated Role Introduction */}
         <div
           ref={introRef}
-          className="opacity-0 text-lg sm:text-2xl md:text-3xl text-text/90 font-light max-w-3xl flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 mb-5"
+          className="opacity-0 text-base sm:text-xl md:text-2xl lg:text-3xl text-text/90 font-light max-w-3xl flex flex-wrap items-center justify-center gap-x-2 gap-y-1 mb-4 sm:mb-6"
         >
           <span>I'm a Developer exploring the intersection of</span>
-          <span className="inline-flex items-center min-w-[220px] sm:min-w-[280px] justify-center sm:justify-start h-9 sm:h-11">
+          <span className="inline-flex items-center justify-center min-w-[160px] sm:min-w-[240px] h-8 sm:h-10">
             <AnimatePresence mode="wait">
               <motion.span
                 key={currentRole}
-                initial={{ opacity: 0, y: 15, filter: 'blur(6px)' }}
+                initial={{ opacity: 0, y: 12, filter: 'blur(4px)' }}
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                exit={{ opacity: 0, y: -15, filter: 'blur(6px)' }}
-                transition={{ duration: 0.35, ease: 'easeOut' }}
+                exit={{ opacity: 0, y: -12, filter: 'blur(4px)' }}
+                transition={{ duration: 0.32, ease: 'easeOut' }}
                 className="font-medium bg-gradient-to-r from-[#89AACC] to-[#4E85BF] bg-clip-text text-transparent underline decoration-[#89AACC]/40 underline-offset-4"
               >
                 {currentRole}
@@ -133,15 +133,15 @@ export default function Hero({ isLoaded }) {
           </span>
         </div>
 
-        {/* Narrative Description */}
+        {/* Narrative Description (15-16px on mobile with high contrast) */}
         <p
           ref={descRef}
-          className="opacity-0 text-sm sm:text-base md:text-lg text-muted max-w-2xl mx-auto leading-relaxed mb-8 sm:mb-10 font-sans"
+          className="opacity-0 text-[15px] sm:text-base md:text-lg text-text/85 max-w-2xl mx-auto leading-relaxed mb-6 sm:mb-8 font-sans font-normal"
         >
           {personalData.hero.description}
         </p>
 
-        {/* Action CTAs */}
+        {/* Action CTAs: touch-friendly min-h-[48px] */}
         <div
           ref={ctaRef}
           className="opacity-0 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto"
@@ -153,10 +153,9 @@ export default function Hero({ isLoaded }) {
               e.preventDefault();
               document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="group relative inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-sm font-medium text-black bg-white hover:bg-white/90 shadow-lg shadow-white/10 hover:shadow-white/20 transition-all duration-300 w-full sm:w-auto overflow-hidden"
+            className="group relative inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-sm font-medium text-black bg-white hover:bg-white/90 shadow-lg shadow-white/10 hover:shadow-white/20 transition-all duration-300 w-full sm:w-auto min-h-[48px] overflow-hidden"
           >
-            {/* Subtle light shimmer */}
-            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full duration-1000 bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform" />
+            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full duration-1000 bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform pointer-events-none" />
             <span className="relative z-10">{personalData.hero.ctaWork}</span>
             <ArrowDown className="relative z-10 w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
           </a>
@@ -168,7 +167,7 @@ export default function Hero({ isLoaded }) {
               e.preventDefault();
               document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="group relative inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-sm font-medium text-white bg-white/5 hover:bg-white/10 border border-white/15 hover:border-white/30 backdrop-blur-sm transition-all duration-300 w-full sm:w-auto"
+            className="group relative inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-sm font-medium text-white bg-white/5 hover:bg-white/10 border border-white/15 hover:border-white/30 backdrop-blur-sm transition-all duration-300 w-full sm:w-auto min-h-[48px]"
           >
             <span>{personalData.hero.ctaConnect}</span>
             <ArrowUpRight className="w-4 h-4 text-[#89AACC] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -179,18 +178,18 @@ export default function Hero({ isLoaded }) {
       {/* Subtle Scroll Indicator */}
       <div
         ref={scrollIndicatorRef}
-        className="opacity-0 relative z-10 flex flex-col items-center justify-center pt-6 text-muted/60 hover:text-muted transition-colors cursor-pointer"
+        className="opacity-0 relative z-10 flex flex-col items-center justify-center pt-4 sm:pt-6 text-muted/70 hover:text-muted transition-colors cursor-pointer"
         onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
       >
-        <div className="text-[10px] font-mono uppercase tracking-[0.25em] mb-2">
+        <div className="text-[10px] font-mono uppercase tracking-[0.25em] mb-1.5">
           Scroll Down
         </div>
         <motion.div
-          animate={{ y: [0, 6, 0] }}
+          animate={{ y: [0, 5, 0] }}
           transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-          className="w-5 h-8 rounded-full border border-white/15 flex items-start justify-center p-1"
+          className="w-5 h-7 rounded-full border border-white/20 flex items-start justify-center p-1"
         >
-          <div className="w-1 h-2 rounded-full bg-[#89AACC]" />
+          <div className="w-1 h-1.5 rounded-full bg-[#89AACC]" />
         </motion.div>
       </div>
     </section>

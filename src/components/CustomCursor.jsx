@@ -7,8 +7,11 @@ export default function CustomCursor() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Only enable on desktop pointer devices
-    const isTouch = window.matchMedia('(pointer: coarse)').matches;
+    // Only enable on fine pointer devices without reduced motion preference
+    const isTouch = typeof window !== 'undefined' && (
+      window.matchMedia('(pointer: coarse)').matches ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    );
     if (isTouch) return;
 
     const onMouseMove = (e) => {
@@ -43,7 +46,7 @@ export default function CustomCursor() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-[9999] overflow-hidden">
+    <div className="fixed inset-0 pointer-events-none z-[9999] overflow-hidden" aria-hidden="true">
       {/* Outer subtle ring */}
       <motion.div
         className="fixed top-0 left-0 rounded-full border border-[#89AACC]/40 pointer-events-none"
