@@ -214,8 +214,8 @@ export default function Explorations() {
       ref={sectionRef}
       className="relative pt-8 sm:pt-12 lg:pt-14 pb-16 sm:py-24 lg:py-28 px-4 sm:px-8 lg:px-16 bg-bg overflow-hidden"
     >
-      {/* Background glow */}
-      <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#89AACC]/5 rounded-full blur-[160px] pointer-events-none" />
+      {/* Background atmospheric glow */}
+      <div className="absolute top-1/4 right-1/4 w-[550px] h-[550px] bg-[#89AACC]/15 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
         {/* Section Heading */}

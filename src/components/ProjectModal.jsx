@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, CheckCircle2, Layers, ArrowUpRight, ExternalLink } from 'lucide-react';
+import { X, CheckCircle2, Layers, ArrowUpRight } from 'lucide-react';
 import { GithubIcon } from './SocialIcons';
 
 export default function ProjectModal({ project, isOpen, onClose }) {
@@ -59,13 +59,15 @@ export default function ProjectModal({ project, isOpen, onClose }) {
               </p>
             </div>
 
-            {/* Optional Screenshot in Modal */}
+            {/* Optional Screenshot in Modal: Clean & vibrant */}
             {project.image && (
-              <div className="rounded-xl overflow-hidden border border-white/10">
+              <div className="rounded-2xl overflow-hidden border border-white/10 bg-[#0e1219] aspect-[16/10] max-h-72 w-full flex items-center justify-center">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-auto max-h-56 object-cover object-top"
+                  loading="eager"
+                  decoding="async"
+                  className="w-full h-full object-cover object-top"
                 />
               </div>
             )}

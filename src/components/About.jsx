@@ -68,8 +68,8 @@ export default function About() {
       className="relative py-16 sm:py-24 lg:py-28 px-4 sm:px-8 lg:px-16 bg-bg overflow-hidden"
     >
       {/* Background Subtle Ambient Gradients */}
-      <div className="absolute top-1/4 -left-48 w-96 h-96 bg-[#89AACC]/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-10 right-0 w-96 h-96 bg-[#4E85BF]/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/4 -left-48 w-[450px] h-[450px] bg-[#89AACC]/15 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-10 right-0 w-[450px] h-[450px] bg-[#4E85BF]/15 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
         {/* Section Index Marker */}

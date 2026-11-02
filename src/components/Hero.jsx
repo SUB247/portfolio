@@ -79,14 +79,17 @@ export default function Hero({ isLoaded }) {
       ref={heroRef}
       className="relative min-h-[100svh] flex flex-col justify-between pt-24 sm:pt-28 pb-8 sm:pb-12 px-4 sm:px-8 lg:px-16 overflow-hidden bg-bg"
     >
-      {/* Background layer: HLS video on desktop, lightweight atmospheric gradient on mobile */}
+      {/* Background layer: HLS video on desktop, luminous atmospheric gradient on mobile */}
       <HlsVideoBackground
         src={personalData.hero.hlsVideoUrl}
-        overlayOpacity="bg-black/80 sm:bg-black/75"
+        overlayOpacity="bg-black/35 sm:bg-black/30"
       />
 
-      {/* Subtle top spotlight glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[90vw] max-w-4xl h-[320px] bg-gradient-to-b from-[#4E85BF]/15 via-transparent to-transparent blur-3xl pointer-events-none" />
+      {/* Atmospheric spotlight glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[95vw] max-w-5xl h-[420px] bg-gradient-to-b from-[#4E85BF]/25 via-[#89AACC]/10 to-transparent blur-3xl pointer-events-none" />
+
+      {/* Subtle ambient dots texture */}
+      <div className="absolute inset-0 bg-dots-subtle opacity-30 pointer-events-none" />
 
       {/* Main Hero Body */}
       <div className="relative z-10 max-w-4xl mx-auto my-auto w-full text-center flex flex-col items-center">

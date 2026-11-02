@@ -5,7 +5,7 @@ export default function LoadingScreen({ onComplete }) {
   const [count, setCount] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
 
-  const words = ["Explore", "Create", "Innovate"];
+  const words = ["Explore.", "Create.", "Innovate."];
 
   // Calculate current word based on count progress
   const wordIndex = count < 35 ? 0 : count < 70 ? 1 : 2;
@@ -72,17 +72,20 @@ export default function LoadingScreen({ onComplete }) {
           </div>
 
           {/* Center Content: Big Word Cycle + Counter */}
-          <div className="relative z-10 my-auto text-center flex flex-col items-center justify-center">
-            {/* Word Cycle with Instrument Serif */}
-            <div className="h-28 sm:h-36 md:h-44 flex items-center justify-center overflow-hidden">
+          <div className="relative z-10 my-auto text-center flex flex-col items-center justify-center w-full max-w-4xl mx-auto">
+            {/* Word Cycle with Instrument Serif: generous space, unclipped descenders and italic overhangs */}
+            <div className="min-h-[140px] sm:min-h-[180px] md:min-h-[220px] w-full flex items-center justify-center px-4 sm:px-8 py-2 relative">
               <AnimatePresence mode="wait">
                 <motion.h2
                   key={currentWord}
-                  initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+                  initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
                   animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  exit={{ opacity: 0, y: -30, filter: "blur(10px)" }}
-                  transition={{ duration: 0.45, ease: "easeOut" }}
-                  className="font-serif italic text-6xl sm:text-8xl md:text-9xl tracking-tight text-white"
+                  exit={{ opacity: 0, y: -16, filter: "blur(8px)" }}
+                  transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+                  className="font-serif italic text-6xl sm:text-8xl md:text-9xl tracking-tight text-white leading-normal px-4 py-2 text-center select-none"
+                  style={{
+                    willChange: "transform, opacity, filter"
+                  }}
                 >
                   {currentWord}
                 </motion.h2>

@@ -2,7 +2,6 @@ import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Download, GraduationCap, MapPin, Mail, Sparkles, Terminal, FileText, ArrowUpRight } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
-import { personalData } from '../data/personal';
 
 export default function ResumeModal({ isOpen, onClose }) {
   if (!isOpen) return null;
@@ -175,7 +174,7 @@ export default function ResumeModal({ isOpen, onClose }) {
                 <div className="p-3.5 sm:p-4 rounded-lg bg-white/[0.02] border border-white/5 space-y-1.5">
                   <div className="flex justify-between items-center gap-2">
                     <span className="font-semibold text-white text-sm">CraveAI — AI-Powered Cookbook</span>
-                    <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 shrink-0">In Development</span>
+                    <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shrink-0">Live Platform</span>
                   </div>
                   <p className="text-xs sm:text-sm text-text/80 leading-relaxed font-normal">
                     Digital cookbook web application powered by Google Gemini API to discover recipes, generate customized meals based on available ingredients, and navigate cuisines.

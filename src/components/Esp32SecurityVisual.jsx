@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { Radio, ShieldAlert, Cpu, Activity, CheckCircle2, Lock } from 'lucide-react';
+import { Radio, Cpu, Activity, CheckCircle2 } from 'lucide-react';
 
 export default function Esp32SecurityVisual() {
   const [activeChannel, setActiveChannel] = useState(37);
-  const [isScanning, setIsScanning] = useState(false);
 
   const channels = [
     { num: 37, freq: "2402 MHz", desc: "Primary Advertising Channel A" },

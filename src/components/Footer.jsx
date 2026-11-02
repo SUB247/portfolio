@@ -3,9 +3,9 @@ import { ArrowUp, ArrowUpRight, Code2 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './SocialIcons';
 import { personalData } from '../data/personal';
 
-export default function Footer() {
-  const currentYear = new Date().getFullYear();
+const currentYear = 2026;
 
+export default function Footer() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -26,8 +26,9 @@ export default function Footer() {
 
           <span className="hidden sm:inline text-white/20">•</span>
 
-          <p className="text-xs sm:text-sm text-text/75 font-sans font-normal">
-            B.Tech CSE Student, UIT Prayagraj. Open to learning & collaborations.
+          <p className="text-xs sm:text-sm text-text/75 font-sans font-normal text-center leading-relaxed">
+            B.Tech CSE Student, UIT Prayagraj.
+            <span className="block mt-0.5">Open to learning & collaborations.</span>
           </p>
         </div>
 

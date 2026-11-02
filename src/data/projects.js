@@ -64,8 +64,8 @@ export const projectsData = [
     number: "03",
     title: "CraveAI",
     category: "AI-Powered Cookbook",
-    badge: "In Development",
-    status: "In Development",
+    badge: "Live",
+    status: "Live",
     year: "2025",
     description:
       "An AI-powered digital cookbook designed to help users discover recipes, explore cuisines, and create personalized cooking experiences.",
@@ -79,8 +79,8 @@ export const projectsData = [
     techStack: ["Next.js", "React", "Google Gemini API", "Supabase", "Tailwind CSS"],
     image: craveaiImg,
     links: {
-      github: null, // In Development — not yet on GitHub
-      demo: null
+      github: "https://github.com/SUB247/CraveAI",
+      demo: "https://craveai-liart.vercel.app/"
     }
   }
 ];

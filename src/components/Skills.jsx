@@ -96,8 +96,9 @@ export default function Skills() {
       ref={sectionRef}
       className="relative pt-16 sm:pt-24 lg:pt-28 pb-10 sm:pb-14 lg:pb-16 px-4 sm:px-8 lg:px-16 bg-bg overflow-hidden"
     >
-      {/* Background glow */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#4E85BF]/10 rounded-full blur-[150px] pointer-events-none" />
+      {/* Background visible atmospheric glows */}
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-[#4E85BF]/15 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-[450px] h-[450px] bg-[#89AACC]/12 rounded-full blur-[150px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}

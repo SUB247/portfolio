@@ -67,10 +67,10 @@ export default function Contact() {
       ref={sectionRef}
       className="relative flex flex-col justify-center py-16 sm:py-24 lg:py-28 px-4 sm:px-8 lg:px-16 overflow-hidden bg-bg"
     >
-      {/* Cinematic HLS Video Background with darker overlay as specified */}
+      {/* Cinematic HLS Video Background with balanced atmospheric overlay */}
       <HlsVideoBackground
         src={personalData.hero.hlsVideoUrl}
-        overlayOpacity="bg-black/85"
+        overlayOpacity="bg-black/55 sm:bg-black/50"
       />
 
       {/* Top and bottom subtle gradient masks */}
