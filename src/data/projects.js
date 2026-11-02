@@ -1,126 +1,86 @@
+import cyberlabImg from '../assets/projects/cyberlab.png';
+import craveaiImg from '../assets/projects/craveai.png';
+
 export const projectsData = [
   {
-    id: "cyberlab",
+    id: "esp32-security",
     number: "01",
-    title: "CYBERLAB",
-    category: "Cybersecurity Learning Platform",
-    badge: "Interactive Security Lab",
-    status: "Prototype / In Development",
+    title: "ESP32 Bluetooth Security Experiment",
+    category: "Hardware / Wireless Security Research",
+    badge: "Hardware Lab",
+    status: "Completed & Demonstrated",
     year: "2025",
     description:
-      "An interactive cybersecurity learning environment designed to help beginners understand security concepts through guided missions, simulated terminals and practical exercises.",
+      "A hands-on ESP32-based wireless security experiment exploring Bluetooth Low Energy behavior in a controlled lab environment.",
     features: [
-      "Interactive learning missions",
-      "Simulated terminal",
-      "Progressive hints",
-      "Command validation",
-      "Learning progress tracking"
+      "Embedded systems experimentation",
+      "Bluetooth Low Energy concepts & frame inspection",
+      "Wireless security awareness & telemetry analysis",
+      "Hardware and software firmware integration",
+      "Strictly controlled laboratory testing environment"
     ],
-    techStack: ["React", "Tailwind CSS", "Linux CLI", "Web Security", "Framer Motion"],
+    techStack: ["ESP32", "C / C++", "BLE Protocol", "Embedded Systems", "Hardware Security"],
+    image: null, // Visualized via interactive hardware lab telemetry
     links: {
-      github: "https://github.com/vmaurya905/cyberlab",
-      demo: null // Configurable placeholder
+      github: null, // Not yet pushed to GitHub — no fake links
+      demo: null
     },
-    // Interactive terminal preview data for the card!
-    terminalDemo: {
-      prompt: "guest@cyberlab:~$",
-      initialCommand: "cyberlab --scan-target demo.local",
-      initialOutput: [
-        "[+] Initializing security sandbox...",
-        "[+] Port 22: SSH (Open - OpenSSH 8.9p1)",
-        "[+] Port 80: HTTP (Open - Nginx/1.18.0)",
-        "[+] Port 443: HTTPS (Open - SSL/TLS Active)",
-        "[!] Vulnerability check: 1 misconfiguration detected in auth token handler.",
-        "[i] Mission Objective: Exploit token leakage to retrieve root flag."
-      ],
-      quickCommands: ["scan", "decrypt", "status", "hint"]
+    // Hardware Telemetry & BLE Packet Visualizer Data
+    telemetry: {
+      device: "ESP32-WROOM-32D",
+      frequency: "2.4 GHz ISM",
+      mode: "BLE 5.0 Controlled Lab Beacon",
+      packetsInspected: "4,280",
+      signalStatus: "Isolated Testbed Active"
     }
   },
   {
-    id: "relx",
+    id: "cyberlab",
     number: "02",
-    title: "RELX",
-    category: "AI Chatbot",
-    badge: "LLM Web Experience",
-    status: "Active Exploration",
+    title: "CYBERLAB",
+    category: "Cybersecurity Learning Platform",
+    badge: "Live Platform",
+    status: "Live",
+    year: "2025 - Present",
+    description:
+      "An interactive cybersecurity learning platform designed to help beginners understand security concepts through guided missions, simulated terminals, and practical exercises.",
+    features: [
+      "Guided learning missions",
+      "Simulated terminal",
+      "Progressive hints",
+      "Command validation",
+      "Learning progress tracking",
+      "Cybersecurity learning paths"
+    ],
+    techStack: ["Next.js", "React", "Supabase", "Tailwind CSS", "Linux CLI", "Web Security"],
+    image: cyberlabImg,
+    links: {
+      github: "https://github.com/SUB247/CYBERLAB",
+      demo: "https://cyberlab-dusky.vercel.app/"
+    }
+  },
+  {
+    id: "craveai",
+    number: "03",
+    title: "CraveAI",
+    category: "AI-Powered Cookbook",
+    badge: "In Development",
+    status: "In Development",
     year: "2025",
     description:
-      "An AI-powered conversational web application built to explore LLM integration and modern chatbot interfaces.",
+      "An AI-powered digital cookbook designed to help users discover recipes, explore cuisines, and create personalized cooking experiences.",
     features: [
-      "Gemini API integration",
-      "Conversational interface",
-      "Modern sidebar layout",
-      "AI-powered responses"
+      "Recipe discovery",
+      "Cuisine categories",
+      "AI recipe generation",
+      "Ingredient-based search",
+      "Personalized cooking assistance"
     ],
-    techStack: ["React", "Gemini API", "Tailwind CSS", "Framer Motion", "Markdown Parser"],
+    techStack: ["Next.js", "React", "Google Gemini API", "Supabase", "Tailwind CSS"],
+    image: craveaiImg,
     links: {
-      github: "https://github.com/vmaurya905/relx-ai",
-      demo: null // Configurable placeholder
-    },
-    // Simulated chat interface preview
-    chatDemo: [
-      {
-        sender: "user",
-        text: "Can you explain how neural attention works in simple terms?"
-      },
-      {
-        sender: "ai",
-        text: "Think of attention like a spotlight: instead of reading an entire book equally, the model focuses on the words most related to the current context."
-      }
-    ]
-  },
-  {
-    id: "ai-experiments",
-    number: "03",
-    title: "AI Experiments",
-    category: "Artificial Intelligence",
-    badge: "Research & Sandbox",
-    status: "Active Research",
-    year: "2024 - 2025",
-    description:
-      "A collection of experiments exploring language models, AI applications, prompt engineering and emerging AI technologies.",
-    features: [
-      "Prompt chain orchestration",
-      "Tokenization & context window benchmarking",
-      "Retrieval Augmented Generation (RAG) concepts",
-      "System prompt vulnerability testing"
-    ],
-    techStack: ["Python", "Gemini API", "LangChain concepts", "Prompt Engineering"],
-    links: {
-      github: "https://github.com/vmaurya905/ai-experiments",
+      github: null, // In Development — not yet on GitHub
       demo: null
-    },
-    metrics: [
-      { label: "Experiments", value: "8+" },
-      { label: "Pipelines Tested", value: "12" },
-      { label: "Latency Benchmark", value: "~320ms" }
-    ]
-  },
-  {
-    id: "creative-experiments",
-    number: "04",
-    title: "Creative Experiments",
-    category: "Creative Technology",
-    badge: "Motion & UI Concepts",
-    status: "Continuous Sandbox",
-    year: "2024 - 2026",
-    description:
-      "An evolving collection of visual experiments, interactive interfaces, UI concepts and motion design explorations.",
-    features: [
-      "GSAP timeline choreography",
-      "Interactive canvas and particle systems",
-      "Awwwards-style editorial typography",
-      "Micro-interaction physics"
-    ],
-    techStack: ["GSAP", "ScrollTrigger", "Canvas API", "Tailwind CSS", "CSS Shaders"],
-    links: {
-      github: "https://github.com/vmaurya905/creative-experiments",
-      demo: null
-    },
-    metrics: [
-      { label: "Animations", value: "20+" },
-      { label: "Framerate", value: "60 FPS" },
-      { label: "Techniques", value: "Parallax / Shaders" }
-    ]
+    }
   }
 ];

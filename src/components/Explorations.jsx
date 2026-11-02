@@ -40,7 +40,7 @@ export default function Explorations() {
       mm.add("(min-width: 768px)", () => {
         if (col1Ref.current && col2Ref.current) {
           gsap.to(col1Ref.current, {
-            y: -50,
+            y: -40,
             ease: 'none',
             scrollTrigger: {
               trigger: sectionRef.current,
@@ -51,7 +51,7 @@ export default function Explorations() {
           });
 
           gsap.to(col2Ref.current, {
-            y: 50,
+            y: 40,
             ease: 'none',
             scrollTrigger: {
               trigger: sectionRef.current,
@@ -212,7 +212,7 @@ export default function Explorations() {
     <section
       id="explorations"
       ref={sectionRef}
-      className="relative py-16 sm:py-24 lg:py-28 px-4 sm:px-8 lg:px-16 bg-bg overflow-hidden"
+      className="relative pt-8 sm:pt-12 lg:pt-14 pb-16 sm:py-24 lg:py-28 px-4 sm:px-8 lg:px-16 bg-bg overflow-hidden"
     >
       {/* Background glow */}
       <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[#89AACC]/5 rounded-full blur-[160px] pointer-events-none" />
@@ -236,7 +236,7 @@ export default function Explorations() {
           </p>
         </div>
 
-        {/* Two Column Grid (Single column on mobile, offset only on md+) */}
+        {/* Two Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 items-start">
           {/* Column 1 */}
           <div ref={col1Ref} className="space-y-6 sm:space-y-8">

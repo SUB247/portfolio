@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { BookOpen, Flame, Cpu, GraduationCap, MapPin, Compass } from 'lucide-react';
+import { GraduationCap, MapPin, Compass, Sparkles } from 'lucide-react';
 import { personalData } from '../data/personal';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -50,12 +50,12 @@ export default function About() {
 
   const getIcon = (iconName) => {
     switch (iconName) {
-      case 'BookOpen':
-        return <BookOpen className="w-5 h-5 text-[#89AACC]" />;
-      case 'Flame':
-        return <Flame className="w-5 h-5 text-[#89AACC]" />;
-      case 'Cpu':
-        return <Cpu className="w-5 h-5 text-[#89AACC]" />;
+      case 'GraduationCap':
+        return <GraduationCap className="w-5 h-5 text-[#89AACC]" />;
+      case 'Compass':
+        return <Compass className="w-5 h-5 text-[#89AACC]" />;
+      case 'Sparkles':
+        return <Sparkles className="w-5 h-5 text-[#89AACC]" />;
       default:
         return <Compass className="w-5 h-5 text-[#89AACC]" />;
     }
@@ -82,7 +82,7 @@ export default function About() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
           {/* Left Column: Heading + Editorial Story */}
-          <div className="lg:col-span-7 space-y-6 sm:space-y-8">
+          <div className="lg:col-span-7 space-y-6 sm:space-y-7">
             <h2
               ref={headingRef}
               className="font-serif italic text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-white tracking-tight leading-[1.1]"
@@ -97,13 +97,13 @@ export default function About() {
                 </p>
               ))}
 
-              {/* Verified Identity Badges */}
-              <div className="pt-2 flex flex-wrap items-center gap-2.5 sm:gap-3 text-xs font-mono text-muted/90">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/10">
+              {/* Connected, neatly-aligned identity badges with zero excessive space */}
+              <div className="pt-2 flex flex-wrap items-center gap-2 sm:gap-2.5 text-xs font-mono text-muted/90">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-text/80">
                   <GraduationCap className="w-3.5 h-3.5 text-[#89AACC]" />
-                  <span>UIT Prayagraj • B.Tech</span>
+                  <span>UIT Prayagraj • B.Tech CSE</span>
                 </div>
-                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/10">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-text/80">
                   <MapPin className="w-3.5 h-3.5 text-[#89AACC]" />
                   <span>Prayagraj, India</span>
                 </div>
@@ -115,19 +115,19 @@ export default function About() {
             </div>
           </div>
 
-          {/* Right Column: 3 Information Blocks */}
-          <div ref={cardsRef} className="lg:col-span-5 space-y-3.5 sm:space-y-4">
+          {/* Right Column: 3 Compact Information Blocks */}
+          <div ref={cardsRef} className="lg:col-span-5 space-y-3 sm:space-y-3.5">
             {personalData.about.infoBlocks.map((block) => (
               <div
                 key={block.id}
-                className="group relative p-5 sm:p-6 rounded-2xl bg-surface/85 border border-stroke hover:border-white/20 transition-all duration-300 hover:shadow-xl hover:shadow-[#4E85BF]/5"
+                className="group relative p-4 sm:p-5 rounded-2xl bg-surface/85 border border-stroke hover:border-white/20 transition-all duration-300 hover:shadow-xl hover:shadow-[#4E85BF]/5"
               >
                 {/* Glow border gradient effect on hover */}
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#89AACC]/10 to-[#4E85BF]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
-                <div className="relative z-10 flex items-start justify-between mb-2.5">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center group-hover:scale-105 group-hover:border-[#89AACC]/40 transition-all duration-300 shrink-0">
+                <div className="relative z-10 flex items-start justify-between mb-2">
+                  <div className="flex items-center gap-2.5 sm:gap-3">
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/[0.04] border border-white/10 flex items-center justify-center group-hover:scale-105 group-hover:border-[#89AACC]/40 transition-all duration-300 shrink-0">
                       {getIcon(block.icon)}
                     </div>
                     <div>

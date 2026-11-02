@@ -9,15 +9,25 @@ export default function HlsVideoBackground({
   const containerRef = useRef(null);
   const videoRef = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   // Check user preference for reduced motion
   const prefersReducedMotion = typeof window !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Only load and stream background video on desktop (>= 768px) to optimize mobile performance and battery
   useEffect(() => {
-    // If reduced motion is enabled, don't stream or autoplay background video
-    if (prefersReducedMotion) return;
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 768);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    // If on mobile or reduced motion is requested, do not load or play HLS video
+    if (!isDesktop || prefersReducedMotion) return;
 
     const video = videoRef.current;
     if (!video) return;
@@ -58,7 +68,6 @@ export default function HlsVideoBackground({
         }
       });
     } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-      // Native HLS support (Safari / iOS)
       video.src = src;
       video.addEventListener('loadedmetadata', () => {
         setIsLoaded(true);
@@ -71,17 +80,17 @@ export default function HlsVideoBackground({
         hlsInstance.destroy();
       }
     };
-  }, [src, prefersReducedMotion]);
+  }, [src, isDesktop, prefersReducedMotion]);
 
-  // Pause video when offscreen using IntersectionObserver for battery/GPU performance
+  // Pause video when scrolled offscreen on desktop
   useEffect(() => {
+    if (!isDesktop || prefersReducedMotion) return;
     const container = containerRef.current;
     const video = videoRef.current;
-    if (!container || !video || prefersReducedMotion) return;
+    if (!container || !video) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting);
         if (entry.isIntersecting) {
           if (video.paused && isLoaded) {
             video.play().catch(() => {});
@@ -97,7 +106,7 @@ export default function HlsVideoBackground({
 
     observer.observe(container);
     return () => observer.disconnect();
-  }, [isLoaded, prefersReducedMotion]);
+  }, [isDesktop, isLoaded, prefersReducedMotion]);
 
   return (
     <div
@@ -105,8 +114,8 @@ export default function HlsVideoBackground({
       className={`absolute inset-0 overflow-hidden pointer-events-none select-none ${className}`}
       aria-hidden="true"
     >
-      {/* Video element (only if reduced motion is not preferred) */}
-      {!prefersReducedMotion && (
+      {/* Video element: only rendered and loaded on desktop */}
+      {isDesktop && !prefersReducedMotion && (
         <video
           ref={videoRef}
           autoPlay
@@ -121,21 +130,27 @@ export default function HlsVideoBackground({
         />
       )}
 
-      {/* Fallback & base ambient background */}
+      {/* Atmospheric Charcoal & Soft Blue Gradient Layers (Active on all devices, primary on mobile) */}
       <div 
-        className={`absolute inset-0 transition-opacity duration-1000 ${
-          isLoaded && !prefersReducedMotion ? 'opacity-50' : 'opacity-100'
-        }`}
+        className="absolute inset-0"
         style={{
-          background: 'radial-gradient(ellipse at 50% 25%, rgba(78, 133, 191, 0.22) 0%, rgba(10, 10, 10, 0.96) 75%)'
+          background: 'radial-gradient(circle at 50% 20%, rgba(78, 133, 191, 0.16) 0%, rgba(13, 19, 26, 0.6) 45%, rgba(10, 10, 10, 0.96) 80%)'
         }}
       />
 
-      {/* Responsive dark overlay to maintain razor-sharp text readability */}
+      {/* Secondary soft atmospheric glow */}
+      <div 
+        className="absolute inset-0 opacity-40 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse at 85% 60%, rgba(137, 170, 204, 0.12) 0%, transparent 60%)'
+        }}
+      />
+
+      {/* Responsive dark overlay to guarantee razor-sharp text readability */}
       <div className={`absolute inset-0 ${overlayOpacity}`} />
 
-      {/* Subtle halftone overlay */}
-      <div className="absolute inset-0 halftone-overlay opacity-30" />
+      {/* Restrained noise / halftone texture overlay */}
+      <div className="absolute inset-0 halftone-overlay opacity-25" />
 
       {/* Vignette mask for depth */}
       <div 

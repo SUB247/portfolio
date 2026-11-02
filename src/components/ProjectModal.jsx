@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, CheckCircle2, Layers, ArrowUpRight } from 'lucide-react';
+import { X, CheckCircle2, Layers, ArrowUpRight, ExternalLink } from 'lucide-react';
 import { GithubIcon } from './SocialIcons';
 
 export default function ProjectModal({ project, isOpen, onClose }) {
@@ -59,11 +59,22 @@ export default function ProjectModal({ project, isOpen, onClose }) {
               </p>
             </div>
 
+            {/* Optional Screenshot in Modal */}
+            {project.image && (
+              <div className="rounded-xl overflow-hidden border border-white/10">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-auto max-h-56 object-cover object-top"
+                />
+              </div>
+            )}
+
             {/* Core Features */}
             {project.features && project.features.length > 0 && (
               <div>
                 <h4 className="text-xs font-mono uppercase tracking-widest text-[#89AACC] mb-2.5 flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4" /> Core Features & Architecture
+                  <CheckCircle2 className="w-4 h-4" /> Core Highlights & Architecture
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   {project.features.map((feat, idx) => (
@@ -99,27 +110,41 @@ export default function ProjectModal({ project, isOpen, onClose }) {
             {/* Project Status Note */}
             <div className="p-3.5 sm:p-4 rounded-xl bg-[#4E85BF]/10 border border-[#89AACC]/20 text-xs sm:text-[13px] text-text/80 leading-relaxed font-mono">
               <span className="text-[#89AACC] font-semibold block mb-1">Authentic Project Note:</span>
-              This project is part of Vivek Maurya&apos;s practical learning trajectory at UIT Prayagraj. Work-in-progress components are actively iterated upon to explore real-world software architecture.
+              This project represents practical student engineering work at UIT Prayagraj. Live deployments and public source repositories are provided only where officially published.
             </div>
           </div>
 
           {/* Footer Actions */}
           <div className="px-5 sm:px-6 py-3.5 sm:py-4 border-t border-white/10 bg-[#161616]/60 flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              {project.links.github ? (
+            <div className="flex items-center space-x-2 sm:space-x-3">
+              {project.links.demo && (
+                <a
+                  href={project.links.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-medium text-black bg-white hover:bg-white/90 transition-all min-h-[38px]"
+                >
+                  <span>Live Demo</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 text-black" />
+                </a>
+              )}
+
+              {project.links.github && (
                 <a
                   href={project.links.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-medium text-white bg-white/10 hover:bg-white/15 border border-white/15 transition-all min-h-[38px]"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-medium text-white bg-white/10 hover:bg-white/15 border border-white/15 transition-all min-h-[38px]"
                 >
                   <GithubIcon className="w-3.5 h-3.5" />
                   <span>GitHub Repository</span>
                   <ArrowUpRight className="w-3 h-3 text-muted" />
                 </a>
-              ) : (
+              )}
+
+              {!project.links.demo && !project.links.github && (
                 <span className="text-xs text-muted font-mono">
-                  GitHub link configurable
+                  {project.status === 'In Development' ? 'Repository staging in progress' : 'Demonstrated in controlled testbed'}
                 </span>
               )}
             </div>

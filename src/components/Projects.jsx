@@ -1,13 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ExternalLink, ArrowUpRight, Info } from 'lucide-react';
+import { ExternalLink, ArrowUpRight, Info, Shield, Radio, Sparkles, ChefHat } from 'lucide-react';
 import { GithubIcon } from './SocialIcons';
 import { projectsData } from '../data/projects';
-import CyberlabTerminal from './CyberlabTerminal';
-import RelxChatPreview from './RelxChatPreview';
-import AiExperimentsVisual from './AiExperimentsVisual';
-import CreativeExperimentsVisual from './CreativeExperimentsVisual';
+import Esp32SecurityVisual from './Esp32SecurityVisual';
 import ProjectModal from './ProjectModal';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -51,21 +48,6 @@ export default function Projects() {
     return () => ctx.revert();
   }, []);
 
-  const renderProjectVisual = (project) => {
-    switch (project.id) {
-      case 'cyberlab':
-        return <CyberlabTerminal />;
-      case 'relx':
-        return <RelxChatPreview />;
-      case 'ai-experiments':
-        return <AiExperimentsVisual />;
-      case 'creative-experiments':
-        return <CreativeExperimentsVisual />;
-      default:
-        return null;
-    }
-  };
-
   return (
     <section
       id="projects"
@@ -91,23 +73,29 @@ export default function Projects() {
                 Featured Projects.
               </h2>
               <p className="mt-2.5 text-sm sm:text-base text-text/80 max-w-xl font-normal leading-relaxed">
-                Practical platforms, AI explorations, and interactive experiments built to deepen technical knowledge and solve tangible problems.
+                Hands-on systems, cybersecurity platforms, and AI applications built to learn through practical engineering and real-world experiments.
               </p>
             </div>
             <div className="flex items-center gap-2 text-xs font-mono text-muted/90 shrink-0">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>All repositories actively maintained</span>
+              <span>Verified student projects</span>
             </div>
           </div>
         </div>
 
-        {/* Responsive Bento Grid: 1 column on mobile/tablet, 12 cols bento on desktop */}
+        {/* Asymmetric Responsive Bento Grid: 1 column on mobile, 12-col bento on desktop */}
         <div ref={gridRef} className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
           {projectsData.map((project, idx) => {
-            // Layout spans: Card 1 (Cyberlab) spans 7 cols, Card 2 (Relx) spans 5 cols
-            // Card 3 spans 5 cols, Card 4 spans 7 cols
-            const isLarge = idx === 0 || idx === 3;
-            const colSpan = isLarge ? 'lg:col-span-7' : 'lg:col-span-5';
+            // Asymmetric Bento Grid:
+            // Project 01 (ESP32): lg:col-span-12 (spans full width with telemetry & hardware lab)
+            // Project 02 (CYBERLAB): lg:col-span-7 (large featured live project with dashboard)
+            // Project 03 (CraveAI): lg:col-span-5 (featured AI cookbook with screenshot)
+            let colSpan = 'lg:col-span-12';
+            if (project.id === 'cyberlab') {
+              colSpan = 'lg:col-span-7';
+            } else if (project.id === 'craveai') {
+              colSpan = 'lg:col-span-5';
+            }
 
             return (
               <div
@@ -123,7 +111,7 @@ export default function Projects() {
                 {/* Halftone texture overlay */}
                 <div className="absolute inset-0 halftone-overlay opacity-20 pointer-events-none" />
 
-                {/* Card Header */}
+                {/* Card Header & Content */}
                 <div className="p-5 sm:p-7 lg:p-8 pb-3 relative z-10">
                   <div className="flex items-center justify-between gap-3 mb-3 sm:mb-4">
                     <div className="flex items-center space-x-2">
@@ -135,8 +123,19 @@ export default function Projects() {
                       </span>
                     </div>
 
-                    <span className="text-[10px] sm:text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-white/[0.04] text-muted border border-white/5 whitespace-nowrap shrink-0">
-                      {project.status}
+                    <span
+                      className={`text-[10px] sm:text-[11px] font-mono px-2.5 py-0.5 rounded-full border whitespace-nowrap shrink-0 flex items-center gap-1.5 ${
+                        project.status === 'Live'
+                          ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
+                          : project.status === 'In Development'
+                          ? 'bg-amber-500/10 text-amber-300 border-amber-500/20'
+                          : 'bg-[#4E85BF]/10 text-[#89AACC] border-[#89AACC]/20'
+                      }`}
+                    >
+                      {project.status === 'Live' && (
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      )}
+                      <span>{project.status}</span>
                     </span>
                   </div>
 
@@ -149,15 +148,27 @@ export default function Projects() {
                   </p>
                 </div>
 
-                {/* Interactive Live Component Showcase */}
-                <div className="px-4 sm:px-7 lg:px-8 pb-4 relative z-10">
-                  {renderProjectVisual(project)}
+                {/* Project Visual / Real Screenshot Showcase */}
+                <div className="px-4 sm:px-7 lg:px-8 pb-4 relative z-10 flex-1 flex flex-col justify-center">
+                  {project.image ? (
+                    <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-black/60 group/img">
+                      <img
+                        src={project.image}
+                        alt={`${project.title} screenshot`}
+                        loading="lazy"
+                        className="w-full h-auto max-h-56 sm:max-h-64 lg:max-h-72 object-cover object-top transition-transform duration-500 group-hover/img:scale-[1.02]"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 pointer-events-none" />
+                    </div>
+                  ) : project.id === 'esp32-security' ? (
+                    <Esp32SecurityVisual />
+                  ) : null}
                 </div>
 
                 {/* Card Footer: Tech tags + Action buttons */}
                 <div className="p-4 sm:p-6 lg:p-8 pt-3 sm:pt-4 border-t border-white/5 flex flex-wrap items-center justify-between gap-3 relative z-10 bg-[#0d0d0d]/40">
                   <div className="flex flex-wrap gap-1.5 items-center">
-                    {project.techStack.slice(0, 3).map((t, i) => (
+                    {project.techStack.map((t, i) => (
                       <span
                         key={i}
                         className="text-[11px] font-mono px-2.5 py-1 rounded-full bg-white/[0.04] text-text/80 border border-white/5"
@@ -165,35 +176,47 @@ export default function Projects() {
                         {t}
                       </span>
                     ))}
-                    {project.techStack.length > 3 && (
-                      <span className="text-[10px] font-mono text-muted/70 self-center">
-                        +{project.techStack.length - 3} more
-                      </span>
-                    )}
                   </div>
 
                   <div className="flex items-center space-x-2">
-                    <button
-                      onClick={() => setSelectedProject(project)}
-                      className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-medium text-white/90 hover:text-white bg-white/5 hover:bg-white/10 active:bg-white/15 border border-white/10 transition-colors min-h-[36px]"
-                      title="View Architecture Details"
-                    >
-                      <Info className="w-3.5 h-3.5 text-[#89AACC]" />
-                      <span>Details</span>
-                    </button>
+                    {/* Live Demo button ONLY if live demo exists */}
+                    {project.links.demo && (
+                      <a
+                        href={project.links.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-medium text-black bg-white hover:bg-white/90 active:bg-white/80 transition-colors min-h-[36px]"
+                        title="Open Live Application"
+                      >
+                        <span>Live Demo</span>
+                        <ArrowUpRight className="w-3.5 h-3.5 text-black" />
+                      </a>
+                    )}
 
+                    {/* GitHub button ONLY if repository exists */}
                     {project.links.github && (
                       <a
                         href={project.links.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="p-2 rounded-full bg-white/5 hover:bg-white/15 text-white/90 hover:text-white border border-white/10 transition-colors min-w-[36px] min-h-[36px] flex items-center justify-center"
+                        className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-medium text-white/90 hover:text-white bg-white/5 hover:bg-white/10 active:bg-white/15 border border-white/10 transition-colors min-h-[36px]"
                         title="GitHub Repository"
                         aria-label={`${project.title} GitHub repository`}
                       >
-                        <GithubIcon className="w-4 h-4" />
+                        <GithubIcon className="w-3.5 h-3.5" />
+                        <span className="hidden sm:inline">Source</span>
                       </a>
                     )}
+
+                    {/* Details modal trigger */}
+                    <button
+                      onClick={() => setSelectedProject(project)}
+                      className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium text-white/80 hover:text-white bg-white/5 hover:bg-white/10 active:bg-white/15 border border-white/10 transition-colors min-h-[36px]"
+                      title="View Architecture Details"
+                    >
+                      <Info className="w-3.5 h-3.5 text-[#89AACC]" />
+                      <span>Details</span>
+                    </button>
                   </div>
                 </div>
               </div>

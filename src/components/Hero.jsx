@@ -79,7 +79,7 @@ export default function Hero({ isLoaded }) {
       ref={heroRef}
       className="relative min-h-[100svh] flex flex-col justify-between pt-24 sm:pt-28 pb-8 sm:pb-12 px-4 sm:px-8 lg:px-16 overflow-hidden bg-bg"
     >
-      {/* Cinematic HLS Video Background with enhanced contrast */}
+      {/* Background layer: HLS video on desktop, lightweight atmospheric gradient on mobile */}
       <HlsVideoBackground
         src={personalData.hero.hlsVideoUrl}
         overlayOpacity="bg-black/80 sm:bg-black/75"
@@ -111,13 +111,17 @@ export default function Hero({ isLoaded }) {
           </span>
         </h1>
 
-        {/* Dynamic Animated Role Introduction */}
+        {/* Dynamic Role Section: Centered layout with role on its own line on mobile */}
         <div
           ref={introRef}
-          className="opacity-0 text-base sm:text-xl md:text-2xl lg:text-3xl text-text/90 font-light max-w-3xl flex flex-wrap items-center justify-center gap-x-2 gap-y-1 mb-4 sm:mb-6"
+          className="opacity-0 flex flex-col items-center justify-center text-center max-w-3xl mb-4 sm:mb-6 px-2"
         >
-          <span>I'm a Developer exploring the intersection of</span>
-          <span className="inline-flex items-center justify-center min-w-[160px] sm:min-w-[240px] h-8 sm:h-10">
+          <p className="text-base sm:text-xl md:text-2xl text-text/90 font-light leading-snug">
+            I'm a Developer exploring the intersection of
+          </p>
+
+          {/* Changing role on its own horizontally centered line */}
+          <div className="h-9 sm:h-11 flex items-center justify-center mt-1 sm:mt-1.5 overflow-hidden w-full">
             <AnimatePresence mode="wait">
               <motion.span
                 key={currentRole}
@@ -125,12 +129,12 @@ export default function Hero({ isLoaded }) {
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 exit={{ opacity: 0, y: -12, filter: 'blur(4px)' }}
                 transition={{ duration: 0.32, ease: 'easeOut' }}
-                className="font-medium bg-gradient-to-r from-[#89AACC] to-[#4E85BF] bg-clip-text text-transparent underline decoration-[#89AACC]/40 underline-offset-4"
+                className="text-lg sm:text-2xl md:text-3xl font-medium bg-gradient-to-r from-[#89AACC] to-[#4E85BF] bg-clip-text text-transparent underline decoration-[#89AACC]/40 underline-offset-4 text-center whitespace-nowrap"
               >
                 {currentRole}
               </motion.span>
             </AnimatePresence>
-          </span>
+          </div>
         </div>
 
         {/* Narrative Description (15-16px on mobile with high contrast) */}

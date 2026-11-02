@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Download, GraduationCap, MapPin, Mail, Sparkles, Terminal, FileText } from 'lucide-react';
+import { X, Download, GraduationCap, MapPin, Mail, Sparkles, Terminal, FileText, ArrowUpRight } from 'lucide-react';
+import { GithubIcon, LinkedinIcon } from './SocialIcons';
 import { personalData } from '../data/personal';
 
 export default function ResumeModal({ isOpen, onClose }) {
@@ -38,7 +39,7 @@ export default function ResumeModal({ isOpen, onClose }) {
               </div>
               <div>
                 <h3 className="text-sm sm:text-base font-semibold text-white tracking-wide">Developer Resume</h3>
-                <p className="text-[11px] text-muted font-mono">Vivek Maurya • B.Tech Student</p>
+                <p className="text-[11px] text-muted font-mono">Vivek Maurya • B.Tech CSE Student</p>
               </div>
             </div>
 
@@ -72,10 +73,10 @@ export default function ResumeModal({ isOpen, onClose }) {
                     Student Developer • Cybersecurity & AI Explorer
                   </p>
                 </div>
-                <div className="text-xs space-y-1 text-muted font-mono">
+                <div className="text-xs space-y-1.5 text-muted font-mono">
                   <div className="flex items-center space-x-1.5">
                     <GraduationCap className="w-3.5 h-3.5 text-[#89AACC]" />
-                    <span>B.Tech Student, UIT Prayagraj</span>
+                    <span>B.Tech CSE, UIT Prayagraj</span>
                   </div>
                   <div className="flex items-center space-x-1.5">
                     <MapPin className="w-3.5 h-3.5 text-[#89AACC]" />
@@ -87,6 +88,30 @@ export default function ResumeModal({ isOpen, onClose }) {
                   </div>
                 </div>
               </div>
+
+              {/* Profiles Row */}
+              <div className="mt-3.5 pt-3 border-t border-white/10 flex flex-wrap items-center gap-3 text-xs font-mono">
+                <a
+                  href="https://github.com/SUB247"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 hover:bg-white/10 text-white/90 transition-colors"
+                >
+                  <GithubIcon className="w-3.5 h-3.5 text-[#89AACC]" />
+                  <span>github.com/SUB247</span>
+                  <ArrowUpRight className="w-3 h-3 text-muted" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/viivek0247/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 hover:bg-white/10 text-white/90 transition-colors"
+                >
+                  <LinkedinIcon className="w-3.5 h-3.5 text-[#89AACC]" />
+                  <span>linkedin.com/in/viivek0247</span>
+                  <ArrowUpRight className="w-3 h-3 text-muted" />
+                </a>
+              </div>
             </div>
 
             {/* Profile Overview */}
@@ -95,7 +120,7 @@ export default function ResumeModal({ isOpen, onClose }) {
                 <Sparkles className="w-3.5 h-3.5" /> Overview
               </h4>
               <p className="text-text/90 text-sm sm:text-base leading-relaxed font-normal">
-                Motivated student developer pursuing B.Tech at UIT Prayagraj with a deep interest in cybersecurity, artificial intelligence, software engineering, and motion graphics. Actively building hands-on projects, strengthening core computer science fundamentals, and exploring emerging technologies.
+                B.Tech Computer Science and Engineering student at UIT Prayagraj interested in cybersecurity, artificial intelligence, and software development. Focused on strengthening programming fundamentals, experimenting with real projects, and building practical digital solutions.
               </p>
             </div>
 
@@ -106,12 +131,12 @@ export default function ResumeModal({ isOpen, onClose }) {
               </h4>
               <div className="p-3.5 sm:p-4 rounded-lg bg-white/[0.02] border border-white/5 flex flex-col sm:flex-row justify-between sm:items-start gap-2">
                 <div>
-                  <div className="font-semibold text-white text-sm sm:text-base">Bachelor of Technology (B.Tech)</div>
+                  <div className="font-semibold text-white text-sm sm:text-base">Bachelor of Technology (B.Tech) in Computer Science and Engineering</div>
                   <div className="text-xs sm:text-sm text-text/80">United Institute of Technology (UIT), Prayagraj</div>
-                  <div className="text-xs text-muted/90 mt-1">Focus: Computer Science & Systems Engineering</div>
+                  <div className="text-xs text-muted/90 mt-1">Focus: Computer Science, Programming & Systems Engineering</div>
                 </div>
                 <span className="text-xs font-mono px-2.5 py-1 rounded bg-[#4E85BF]/10 text-[#89AACC] border border-[#89AACC]/20 w-fit">
-                  Current Student
+                  Undergraduate Student
                 </span>
               </div>
             </div>
@@ -122,26 +147,40 @@ export default function ResumeModal({ isOpen, onClose }) {
                 <Terminal className="w-3.5 h-3.5" /> Highlighted Projects
               </h4>
               <div className="space-y-3">
+                {/* 1. ESP32 */}
+                <div className="p-3.5 sm:p-4 rounded-lg bg-white/[0.02] border border-white/5 space-y-1.5">
+                  <div className="flex justify-between items-center gap-2">
+                    <span className="font-semibold text-white text-sm">ESP32 Bluetooth Security Experiment</span>
+                    <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shrink-0">Lab Completed</span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-text/80 leading-relaxed font-normal">
+                    Hands-on wireless security experiment exploring Bluetooth Low Energy (BLE) behavior, frame inspection, and telemetry telemetry analysis in an isolated lab testbed.
+                  </p>
+                  <div className="text-xs font-mono text-[#89AACC]">ESP32 • C/C++ • BLE Protocol • Embedded Systems • Hardware Security</div>
+                </div>
+
+                {/* 2. CYBERLAB */}
                 <div className="p-3.5 sm:p-4 rounded-lg bg-white/[0.02] border border-white/5 space-y-1.5">
                   <div className="flex justify-between items-center gap-2">
                     <span className="font-semibold text-white text-sm">CYBERLAB — Cybersecurity Learning Platform</span>
-                    <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-white/5 text-muted shrink-0">Prototype</span>
+                    <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-[#4E85BF]/15 text-[#89AACC] border border-[#89AACC]/30 shrink-0">Live Platform</span>
                   </div>
                   <p className="text-xs sm:text-sm text-text/80 leading-relaxed font-normal">
-                    Interactive security learning sandbox with simulated terminal, guided defensive/recon missions, progressive hints, and command validation.
+                    Interactive security learning platform with guided defensive missions, simulated terminal, progressive hint engine, and command validation.
                   </p>
-                  <div className="text-xs font-mono text-[#89AACC]">React • Tailwind CSS • Linux CLI • Web Security</div>
+                  <div className="text-xs font-mono text-[#89AACC]">Next.js • React • Supabase • Tailwind CSS • Linux CLI • Web Security</div>
                 </div>
 
+                {/* 3. CraveAI */}
                 <div className="p-3.5 sm:p-4 rounded-lg bg-white/[0.02] border border-white/5 space-y-1.5">
                   <div className="flex justify-between items-center gap-2">
-                    <span className="font-semibold text-white text-sm">RELX — AI Chatbot Interface</span>
-                    <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-white/5 text-muted shrink-0">Exploration</span>
+                    <span className="font-semibold text-white text-sm">CraveAI — AI-Powered Cookbook</span>
+                    <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 shrink-0">In Development</span>
                   </div>
                   <p className="text-xs sm:text-sm text-text/80 leading-relaxed font-normal">
-                    Conversational web application experimenting with Google Gemini API integration, prompt workflows, clean sidebar navigation, and dynamic streaming responses.
+                    Digital cookbook web application powered by Google Gemini API to discover recipes, generate customized meals based on available ingredients, and navigate cuisines.
                   </p>
-                  <div className="text-xs font-mono text-[#89AACC]">React • Gemini API • Tailwind CSS • Framer Motion</div>
+                  <div className="text-xs font-mono text-[#89AACC]">Next.js • React • Google Gemini API • Supabase • Tailwind CSS</div>
                 </div>
               </div>
             </div>
@@ -154,7 +193,7 @@ export default function ResumeModal({ isOpen, onClose }) {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 text-xs sm:text-[13px]">
                 <div className="p-3 rounded-lg bg-white/[0.02] border border-white/5">
                   <span className="font-semibold text-white block mb-1">Languages:</span>
-                  <span className="text-text/80">C, Python, JavaScript (ES6+)</span>
+                  <span className="text-text/80">C, Python, JavaScript (ES6+), SQL</span>
                 </div>
                 <div className="p-3 rounded-lg bg-white/[0.02] border border-white/5">
                   <span className="font-semibold text-white block mb-1">Web Development:</span>
@@ -162,11 +201,11 @@ export default function ResumeModal({ isOpen, onClose }) {
                 </div>
                 <div className="p-3 rounded-lg bg-white/[0.02] border border-white/5">
                   <span className="font-semibold text-white block mb-1">Tools & Platforms:</span>
-                  <span className="text-text/80">Git, GitHub, VS Code, Vercel, Supabase, Antigravity</span>
+                  <span className="text-text/80">Git, GitHub, VS Code, Vercel, Supabase, Linux</span>
                 </div>
                 <div className="p-3 rounded-lg bg-white/[0.02] border border-white/5">
                   <span className="font-semibold text-white block mb-1">Areas of Interest:</span>
-                  <span className="text-text/80">Cybersecurity, Artificial Intelligence, Linux, Motion Graphics, PC Hardware</span>
+                  <span className="text-text/80">Cybersecurity, Artificial Intelligence, Creative Technology, Motion Graphics, PC Hardware</span>
                 </div>
               </div>
             </div>
@@ -174,7 +213,7 @@ export default function ResumeModal({ isOpen, onClose }) {
 
           {/* Footer */}
           <div className="px-5 sm:px-6 py-3.5 sm:py-4 border-t border-white/10 bg-[#161616]/60 flex items-center justify-between text-xs text-muted">
-            <span>Portfolio of Vivek Maurya</span>
+            <span>Portfolio of Vivek Maurya • UIT Prayagraj</span>
             <button
               onClick={onClose}
               className="text-white hover:text-[#89AACC] transition-colors py-1 px-2"

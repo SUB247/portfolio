@@ -9,7 +9,7 @@ import {
   Send,
   Sparkles,
 } from 'lucide-react';
-import { GithubIcon, LinkedinIcon, InstagramIcon } from './SocialIcons';
+import { GithubIcon, LinkedinIcon } from './SocialIcons';
 import HlsVideoBackground from './HlsVideoBackground';
 import { personalData } from '../data/personal';
 
@@ -135,7 +135,7 @@ export default function Contact() {
             </div>
 
             {/* Social Links */}
-            <div className="pt-4 border-t border-white/10 flex flex-wrap items-center gap-5 sm:gap-6">
+            <div className="pt-4 border-t border-white/10 flex flex-wrap items-center gap-4 sm:gap-6">
               <span className="text-xs font-mono uppercase tracking-widest text-muted">
                 Connect Online:
               </span>
@@ -145,8 +145,13 @@ export default function Contact() {
                   href={s.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center space-x-1.5 text-sm text-text/80 hover:text-white transition-colors min-h-[36px]"
+                  className="group flex items-center space-x-2 text-sm text-text/80 hover:text-white transition-colors min-h-[36px] px-3 py-1.5 rounded-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/5 hover:border-white/15"
                 >
+                  {s.name === 'GitHub' ? (
+                    <GithubIcon className="w-4 h-4 text-[#89AACC]" />
+                  ) : (
+                    <LinkedinIcon className="w-4 h-4 text-[#89AACC]" />
+                  )}
                   <span>{s.name}</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-muted group-hover:text-[#89AACC] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>

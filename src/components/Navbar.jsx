@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, FileText, ArrowUpRight } from 'lucide-react';
+import { GithubIcon, LinkedinIcon } from './SocialIcons';
 import ResumeModal from './ResumeModal';
 
 export default function Navbar() {
@@ -115,8 +116,28 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* Right Action: Resume Button */}
+          {/* Right Action: GitHub, LinkedIn & Resume Button */}
           <div className="hidden sm:flex items-center space-x-2 shrink-0">
+            <a
+              href="https://github.com/SUB247"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white/80 hover:text-white transition-colors"
+              title="GitHub Profile (@SUB247)"
+              aria-label="GitHub Profile"
+            >
+              <GithubIcon className="w-4 h-4" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/viivek0247/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white/80 hover:text-white transition-colors"
+              title="LinkedIn Profile"
+              aria-label="LinkedIn Profile"
+            >
+              <LinkedinIcon className="w-4 h-4" />
+            </a>
             <button
               onClick={() => setResumeOpen(true)}
               className="group relative inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium text-white bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300 min-h-[36px]"
@@ -191,7 +212,28 @@ export default function Navbar() {
                 ))}
               </div>
 
-              <div className="pt-2 border-t border-white/10">
+              <div className="pt-2 border-t border-white/10 space-y-2">
+                <div className="flex items-center justify-center gap-2">
+                  <a
+                    href="https://github.com/SUB247"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-medium text-white/85 bg-white/5 hover:bg-white/10 border border-white/10 transition-colors min-h-[40px]"
+                  >
+                    <GithubIcon className="w-4 h-4 text-[#89AACC]" />
+                    <span>GitHub</span>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/viivek0247/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-medium text-white/85 bg-white/5 hover:bg-white/10 border border-white/10 transition-colors min-h-[40px]"
+                  >
+                    <LinkedinIcon className="w-4 h-4 text-[#89AACC]" />
+                    <span>LinkedIn</span>
+                  </a>
+                </div>
+
                 <button
                   onClick={() => {
                     setMobileMenuOpen(false);

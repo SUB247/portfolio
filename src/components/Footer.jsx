@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowUp } from 'lucide-react';
+import { ArrowUp, ArrowUpRight, Code2 } from 'lucide-react';
+import { GithubIcon, LinkedinIcon } from './SocialIcons';
 import { personalData } from '../data/personal';
 
 export default function Footer() {
@@ -26,12 +27,48 @@ export default function Footer() {
           <span className="hidden sm:inline text-white/20">•</span>
 
           <p className="text-xs sm:text-sm text-text/75 font-sans font-normal">
-            Available for learning, collaboration and interesting projects.
+            B.Tech CSE Student, UIT Prayagraj. Open to learning & collaborations.
           </p>
         </div>
 
-        {/* Right: Copyright & Back to Top */}
-        <div className="flex items-center space-x-4 sm:space-x-6 text-xs font-mono text-muted/90">
+        {/* Center/Right: Socials & Source Code */}
+        <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-mono text-muted/90">
+          <a
+            href="https://github.com/SUB247"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 hover:text-white transition-colors"
+            title="GitHub (@SUB247)"
+          >
+            <GithubIcon className="w-3.5 h-3.5 text-[#89AACC]" />
+            <span>GitHub</span>
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/viivek0247/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 hover:text-white transition-colors"
+            title="LinkedIn (viivek0247)"
+          >
+            <LinkedinIcon className="w-3.5 h-3.5 text-[#89AACC]" />
+            <span>LinkedIn</span>
+          </a>
+
+          <a
+            href={personalData.portfolioRepo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 hover:text-white text-[#89AACC] transition-colors"
+            title="Portfolio Repository"
+          >
+            <Code2 className="w-3.5 h-3.5" />
+            <span>Source</span>
+            <ArrowUpRight className="w-3 h-3" />
+          </a>
+
+          <span className="hidden sm:inline text-white/20">•</span>
+
           <span>&copy; {currentYear} Vivek Maurya</span>
 
           <button

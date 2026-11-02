@@ -2,17 +2,18 @@ export const personalData = {
   name: "Vivek Maurya",
   monogram: "VM",
   role: "Student Developer",
-  education: "B.Tech Student, UIT Prayagraj",
+  education: "B.Tech Computer Science and Engineering, UIT Prayagraj",
   location: "Prayagraj, India",
   email: "vmaurya905@gmail.com",
   status: "Learning & Building",
   
+  // Specific role order requested
   dynamicRoles: [
-    "Developer",
     "Cybersecurity Enthusiast",
     "AI Explorer",
-    "Problem Solver",
-    "Creative Technologist"
+    "Developer",
+    "Creative Technologist",
+    "Problem Solver"
   ],
 
   hero: {
@@ -29,31 +30,31 @@ export const personalData = {
   about: {
     heading: "A little about me.",
     paragraphs: [
-      "I'm currently pursuing my B.Tech at UIT Prayagraj. I enjoy understanding how technology works, experimenting with new ideas, and building projects that help me learn through practical experience.",
-      "My interests span cybersecurity, artificial intelligence, software development and creative technology.",
-      "I'm continuously learning, experimenting and improving my ability to turn concepts into working solutions."
+      "I'm a B.Tech CSE student at UIT Prayagraj interested in cybersecurity, AI, and software development.",
+      "I enjoy exploring how technology works, experimenting with new ideas, and building projects that help me learn through practical experience.",
+      "Currently focused on strengthening my programming fundamentals and exploring the intersection of security, AI, and creative technology."
     ],
     infoBlocks: [
       {
-        id: "learning",
-        title: "Currently Learning",
-        icon: "BookOpen",
-        content: "Network security fundamentals, LLM prompt orchestration, and low-level C programming.",
-        badge: "In Progress"
+        id: "education",
+        title: "Education",
+        icon: "GraduationCap",
+        content: "B.Tech CSE, UIT Prayagraj",
+        badge: "Undergrad"
       },
       {
-        id: "interests",
-        title: "Interested In",
-        icon: "Flame",
-        content: "Cybersecurity, Artificial Intelligence, Interactive Web Interfaces, and Motion Graphics.",
-        badge: "Core Passion"
+        id: "exploring",
+        title: "Currently Exploring",
+        icon: "Compass",
+        content: "Cybersecurity, AI, and Software Development",
+        badge: "Active Focus"
       },
       {
-        id: "building",
-        title: "Currently Building",
-        icon: "Cpu",
-        content: "CYBERLAB terminal training sandbox and RELX Gemini-powered AI conversational interface.",
-        badge: "Active Projects"
+        id: "open-to",
+        title: "Open to",
+        icon: "Sparkles",
+        content: "Learning, collaboration, and interesting projects",
+        badge: "Available"
       }
     ]
   },
@@ -61,21 +62,17 @@ export const personalData = {
   socials: [
     {
       name: "GitHub",
-      url: "https://github.com/vmaurya905",
-      handle: "@vmaurya905",
+      url: "https://github.com/SUB247",
+      handle: "@SUB247",
       icon: "Github"
     },
     {
       name: "LinkedIn",
-      url: "https://linkedin.com/in/vmaurya905",
+      url: "https://www.linkedin.com/in/viivek0247/",
       handle: "Vivek Maurya",
       icon: "Linkedin"
-    },
-    {
-      name: "Instagram",
-      url: "https://instagram.com/vmaurya905",
-      handle: "@vmaurya905",
-      icon: "Instagram"
     }
-  ]
+  ],
+
+  portfolioRepo: "https://github.com/SUB247/portfolio"
 };

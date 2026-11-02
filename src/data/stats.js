@@ -1,10 +1,10 @@
 export const statsData = [
   {
     id: "projects",
-    number: 4,
+    number: 3,
     suffix: "+",
-    label: "Projects Built",
-    description: "Hands-on projects covering security simulation, AI chatbots, and interactive UI experiments."
+    label: "Featured Projects",
+    description: "Hands-on projects covering wireless security experiments, learning sandboxes, and AI-powered applications."
   },
   {
     id: "technologies",
